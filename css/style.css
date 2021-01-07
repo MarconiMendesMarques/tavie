@@ -1,4 +1,4 @@
-body {
+.tavie_body {
     
     display: flex;
     min-height: 100vh;
@@ -12,4 +12,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover; 
    
+}
+
+#tabela_usuarios tr:hover {
+   
+    background-color: #ddd;
+    cursor: pointer;
+
 }

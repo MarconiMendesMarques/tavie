@@ -8,9 +8,7 @@ var displayName = document.getElementById('displayName');
 var id = '';
 var refUser = firebase.database().ref('users'); 
 
-if(firebase.auth().currentUser != null ){
-    firebase.auth().signOut(); 
-}; 
+
 
 // login com email e password
 authEmailPassButton.addEventListener('click', function(){
@@ -36,7 +34,12 @@ authEmailPassButton.addEventListener('click', function(){
                 console.log(childData) ; 
                 console.log(key) ; 
                 console.log(childSnapshot.val().nome) ; 
-               
+                        if(childData){
+                            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                            window.location.replace('./html/users/admin.html')
+                        } else {
+                            window.location.replace('./html/users/cliente.html')
+                        }
                 });
             })
 
@@ -48,7 +51,7 @@ authEmailPassButton.addEventListener('click', function(){
         });
 });
 
-// Criar novo usuário
+/* Criar novo usuário
 createUserButton.addEventListener('click', function () {
     firebase
         .auth()
@@ -64,7 +67,7 @@ createUserButton.addEventListener('click', function () {
             console.error(error.message);
             alert('Falha ao cadastrar, verifique o erro no console.')
         });
-});
+}); */ 
 
 // Logout
 logOutButton.addEventListener('click', function () {
